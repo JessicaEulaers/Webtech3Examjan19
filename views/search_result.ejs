@@ -9,13 +9,14 @@
   <h2>Result</h2>
   <br/><br/>
   <p class='product'>
-   <span><b>Name : </b><%= product.name %></span><br/>
-   <span><b>Description : </b><%= product.description %></span><br/>
-   <span><b>Price : </b><%= product.price %></span><br/>
+   <span><b>Name : </b><%= inhaal.name %></span><br/>
+   <span><b>Exam : </b><%= inhaal.exam %></span><br/>
+   <span><b>Description : </b><%= inhaal.description %></span><br/>
+
   </p>
 
   <form action='/delete' method='POST'>
-    <span><input type='hidden' name='name' value='<%=product.name%>'></span>
+    <span><input type='hidden' name='name' value='<%=inhaal.name%>'></span>
     <span><button type='submit'>Delete</button></span>
   </form>
 
