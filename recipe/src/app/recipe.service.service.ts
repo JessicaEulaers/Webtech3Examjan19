@@ -9,7 +9,7 @@ export class Recipe.ServiceService {
     
 
 
-   // get a product based on the name
+   // add a recipe 
    addProduct(name: string, calories: string, ingredients: string, time: string): string {
        
  	
@@ -18,8 +18,10 @@ export class Recipe.ServiceService {
            return = localStorage.getItem(name)
            }
    	else {
-       return = "name=" + this.name + "&calories=" + this.calories + "&ingredients=" + this.ingredients + "&time=" + this.time;
-       localStorage.setItem(name, calories,ingredients,time);
+   	
+   	localStorage.setItem(name, calories,ingredients,time);
+    return = "name=" + this.name + "&calories=" + this.calories + "&ingredients=" + this.ingredients + "&time=" + this.time;
+       
 }
       
    }
