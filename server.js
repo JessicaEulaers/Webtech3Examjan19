@@ -53,18 +53,14 @@ app.get('/search', (req, res) => {
 app.post('/search', (req, res) => {
  var query = { name: req.body.name }
  db.collection('inhaal').find(query).toArray(function(err, result) {
-   if (err) return console.log(err)
+	 
+	 if (err) return console.log(err)
    if (result == '')
        res.render('search_not_found.ejs', {})
    else
-       res.render('search_result.ejs', { product: result[0] })
+	   res.sort(inhaal.description)
+       res.render('list.ejs', { inhaal: result })
  });
 })
 
-// Delete a product
-app.post('/delete', (req, res) => {
-  db.collection('inhaal').findOneAndDelete({ name: req.body.name }, (err, result) => {
-    if (err) return res.send(500, err)
-    res.redirect('/list')
-  })
-})
+
