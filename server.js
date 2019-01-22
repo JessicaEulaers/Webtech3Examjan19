@@ -20,16 +20,10 @@ app.use(express.static('public'))
 
 // Redirect to list
 app.get('/', (req, res) => {
-   res.redirect('/list')
+   res.redirect('/add')
 })
 
-// List all products
-app.get('/list', (req, res) => {
-  db.collection('inhaal').find().toArray((err, result) => {
-    if (err) return console.log(err)
-    res.render('list.ejs', { products: result })
-  })
-})
+
 
 // Show the add product form
 app.get('/add', (req, res) => {
@@ -38,10 +32,21 @@ app.get('/add', (req, res) => {
 
 // Add a product to the db
 app.post('/add', (req, res) => {
-  db.collection('inhaal').insertOne(req.body, (err, result) => {
-    if (err) return console.log(err)
-     res.redirect('/list')
-  })
+	var query = { name: req.body }
+	 db.collection('inhaal').find(query).toArray(function(err, result) {
+		 
+		 if (err) return console.log(err)
+	   if (result == '')
+		   		db.collection('inhaal').insertOne(req.body, (err, result) => {
+			    if (err) return console.log(err)
+			     res.redirect('/search')
+			     })
+	   else
+		   
+	       res.render('product_already_exists.ejs', { })
+	 });
+  
+  
 })
 
 // Show the search form
