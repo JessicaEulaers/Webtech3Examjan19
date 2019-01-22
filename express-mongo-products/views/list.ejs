@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset='UTF-8'>
+  <title>Exams</title>
+  <link rel='stylesheet' href='css/bootstrap.min.css'>
+</head>
+<body>
+  <h1>All Exams</h1>
+ <br/><br/>
+  <ul class='inhaal'>
+  <% for(var i=0; i < inhaal.length; i++) {%>
+    <li class='inhaal'>
+      <span><b>Name : </b><%= inhaal[i].name %></span><br />
+      <span><b>Exam : </b><%= inhaal[i].exam %></span><br />
+      <span><b>Description : </b><%= inhaal[i].description %></span><br />
+    </li>
+  <% } %>
+  </ul>
+<br />
+
+<a href='/add'>Add exam</a>&nbsp;&nbsp;<a href='/search'>Search product</a>
+
+</body>
+</html>
